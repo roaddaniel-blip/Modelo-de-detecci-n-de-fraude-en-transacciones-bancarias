@@ -90,7 +90,7 @@ ________________________________________________________________________________
 | **Degradación sostenida** | Burn rate ≥ 3 durante ventanas de 2 h y 24 h | **P3** |
 | **Operación estable** | Burn rate < 1 | **Normal** |
 
-###Clasificación de Incidentes y Tiempos de Respuesta (SLA)
+Clasificación de Incidentes y Tiempos de Respuesta (SLA)
 
 | Prioridad | Impacto | Ejemplo | Tiempo objetivo de respuesta |
 | :--- | :--- | :--- | :---: |
@@ -98,3 +98,16 @@ ________________________________________________________________________________
 | **P2 · Alta** | Degradación significativa del servicio | Aumento sostenido de latencia o pérdida de precision | **≤ 15 min** |
 | **P3 · Media** | Anomalía controlada sin impacto inmediato importante | Data drift moderado | **≤ 1 h** |
 | **P4 · Baja** | Evento informativo o preventivo | Variación leve dentro de tolerancias | **Revisión programada** |
+
+_________________________________________________________________________________________________________________________
+
+### Dashboard: Gestión de Alertas e Incidentes
+
+El panel de monitoreo centralizará la información crítica para la respuesta operativa, permitiendo visualizar los siguientes indicadores:
+
+* **Metadatos del incidente:** Prioridad asignada (**P1**, **P2**, **P3** o **P4**), hora exacta de detección y servicio afectado.
+* **Control y seguimiento:** Responsable asignado, estado actual de atención y **runbook asociado** para su mitigación.
+* **Métricas de impacto:** Tiempo transcurrido desde la detección, porcentaje de **presupuesto de error consumido** (*error budget*) y registro de las acciones correctivas aplicadas.
+
+  <img width="568" height="308" alt="image" src="https://github.com/user-attachments/assets/9e7660e5-6474-4d79-ba23-f4dcb4198dd8" />
+
