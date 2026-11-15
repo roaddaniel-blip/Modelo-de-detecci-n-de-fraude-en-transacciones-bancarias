@@ -81,7 +81,7 @@ ________________________________________________________________________________
 
 _________________________________________________________________________________________________________________________
 
-### Niveles de Alerta y Severidad (Error Budget Burn Rate)
+### Niveles de Alerta y Severidad
 
 | Alerta | Condición | Severidad |
 | :--- | :--- | :---: |
@@ -110,4 +110,46 @@ El panel de monitoreo centralizará la información crítica para la respuesta o
 * **Métricas de impacto:** Tiempo transcurrido desde la detección, porcentaje de **presupuesto de error consumido** (*error budget*) y registro de las acciones correctivas aplicadas.
 
   <img width="568" height="308" alt="image" src="https://github.com/user-attachments/assets/9e7660e5-6474-4d79-ba23-f4dcb4198dd8" />
+
+________________________________________________________________________________________________________________________
+
+### Runbooks de respuesta a incidentes
+
+| Prioridad | Descripción | Tiempo objetivo de respuesta | Responsable inicial |
+| :--- | :--- | :---: | :--- |
+| **P1 · Crítica** | Indisponibilidad generalizada o deterioro grave de detección con impacto confirmado | **≤ 5 minutos** | SRE / Operaciones |
+| **P2 · Alta** | Degradación importante de latencia, precision o recall | **≤ 15 minutos** | MLOps / Data Science |
+| **P3 · Media** | Data drift moderado o anomalía sin impacto inmediato | **≤ 1 hora** | MLOps / Data Engineering |
+| **P4 · Baja** | Eventos preventivos o informativos | **Revisión programada** | Equipo responsable |
+
+__________________________________________________________________________________________________________________________
+
+### Estrategias de detección de data drift
+
+| Variable | Cambio que se busca detectar | Riesgo potencial |
+| :--- | :--- | :--- |
+| **Importe de transacción** | Cambios en importes medios, medianas y percentiles. | Nuevos patrones de operaciones fraudulentas. |
+| **Frecuencia transaccional** | Incrementos o disminuciones anómalas. | Fraude automatizado o cambios de comportamiento. |
+| **Horario de operación** | Variaciones en la distribución por hora. | Nuevos patrones temporales de fraude. |
+| **Canal de operación** | Cambios entre canales digitales, cajeros y comercios. | Desplazamiento del fraude entre canales. |
+| **Ubicación geográfica agregada** | Variaciones regionales. | Cambios en patrones de riesgo. |
+| **Tipo de comercio** | Modificaciones en categorías de establecimientos. | Concentración de fraude en determinados sectores. |
+| **Fraud score** | Variación en las probabilidades estimadas por el modelo. | Cambio en la población evaluada o comportamiento predictivo. |
+
+__________________________________________________________________________________________________________________________
+
+### Documentación de respuesta automatizada
+
+| Incidente | Condición de activación | Respuesta propuesta | Nivel de automatización |
+| :--- | :--- | :--- | :--- |
+| **Indisponibilidad** | Burn rate crítico de disponibilidad | Diagnóstico y preparación de rollback | Automática; ejecución según política |
+| **Incremento de latencia** | Incumplimiento sostenido del SLO | Escalamiento horizontal controlado | Automática con límites |
+| **Degradación del modelo** | Recall < 90 % confirmado | Iniciar pipeline de reentrenamiento | Preparación automática |
+| **Data drift significativo** | PSI > 0,25 | Análisis y evaluación del modelo | Automática |
+| **Pérdida de precisión** | Precision < 85 % | Evaluación de umbrales y versión anterior | Semiautomática |
+| **Errores de infraestructura** | Instancias defectuosas | Reinicio o sustitución de instancias | Automática con controles |
+
+
+___________________________________________________________________________________________________________________________
+
 
