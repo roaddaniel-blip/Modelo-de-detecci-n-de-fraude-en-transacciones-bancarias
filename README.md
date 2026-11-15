@@ -21,13 +21,14 @@ Este repositorio busca garantizar los pilares fundamentales del servicio de dete
 ________________________________________________________________________________________________________________
 
 ### Estructura
+```text
 fraudes-bancarios/
-├── monitoring.py           # Sistema de monitoreo con MLflow
-├── simulate_incidents.py   # Simulación de incidentes críticos
-├── runbooks.py             # Runbooks de respuesta automatizada
-├── requirements.txt        # Dependencias
-├── monitoring.log          # Log generado al ejecutar monitoring.py
-├── incidents.log           # Log generado al ejecutar simulate_incidents.py
+├── monitoring.py             # Sistema de monitoreo con MLflow
+├── simulate_incidents.py     # Simulación de incidentes críticos
+├── runbooks.py               # Runbooks de respuesta automatizada
+├── requirements.txt          # Dependencias
+├── monitoring.log            # Log generado al ejecutar monitoring.py
+├── incidents.log             # Log generado al ejecutar simulate_incidents.py
 └── evidencias/
     ├── mlflow_training_runs.png
     ├── mlflow_evaluation_runs.png
