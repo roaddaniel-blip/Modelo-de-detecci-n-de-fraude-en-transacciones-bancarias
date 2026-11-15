@@ -113,20 +113,33 @@ def run_monitoreo_proyecto(nombre_run, metrics_dict, latencia_ms, dataset_actual
             print(f"\n  ✅ Cumplimiento exitoso de SLOs")
         print(f"{'='*55}\n")
 
-# ── Ejecución de los Escenarios con Cifras de este Proyecto ───────────────
-if __name__ == "__main__":
-    # 1. Escenario Normal (Métricas del Modelo v2, latencia estable de 120ms)
-    print("\n🔵 Run 1: Monitoreo Baseline Normal (Modelo v2)")
-    run_monitoreo_proyecto("baseline_v2_normal", model_versions["v2"], latencia_ms=120.0, dataset_actual=importes_actual_normal)
 
-    # 2. Escenario Degradación de Desempeño (Métricas de v3, latencia estable de 125ms)
-    print("\n🔴 Run 2: Validación Modelo v3 (Falla Recall)")
-    run_monitoreo_proyecto("degradacion_recall_v3", model_versions["v3"], latencia_ms=125.0, dataset_actual=importes_actual_normal)
+🔵 Run 1: Monitoreo Baseline Normal (Modelo v2)
 
-    # 3. Escenario Degradación de Infraestructura (Latencia Crítica de 650ms con Modelo v2)
-    print("\n🔴 Run 3: Monitoreo Latencia Crítica en Inferencia")
-    run_monitoreo_proyecto("degradacion_latencia_infraestructura", model_versions["v2"], latencia_ms=650.0, dataset_actual=importes_actual_normal)
+=======================================================
+  Operación: baseline_v2_normal
+=======================================================
+  precision                : 0.875
+  recall                   : 0.923
+  f1_score                 : 0.898
+  pr_auc                   : 0.92
+  latencia_ms              : 120.0
+  psi_drift                : 0.0001
 
-    # 4. Escenario Deriva de Datos (Data Drift con Modelo v2)
-    print("\n🟡 Run 4: Alerta por Data Drift (Transacciones de Alto Monto)")
-    run_monitoreo_proyecto("deteccion_data_drift", model_versions["v2"], latencia_ms=122.0, dataset_actual=importes_actual_drift)
+  ✅ Cumplimiento exitoso de SLOs
+=======================================================
+
+
+🔴 Run 2: Validación Modelo v3 (Falla Recall)
+ERROR:__main__:SLO VIOLATIONS detectadas en degradacion_recall_v3: ['RECALL 0.846 < SLO 0.9']
+ERROR:__main__:SLO VIOLATIONS detectadas en degradacion_latencia_infraestructura: ['LATENCIA 650.0ms > SLO 150.0ms']
+
+=======================================================
+  Operación: degradacion_recall_v3
+=======================================================
+  precision                : 0.891
+  recall                   : 0.846
+  f1_score                 : 0.868
+  pr_auc                   : 0.89
+  latencia_ms              : 125.0
+  psi_drift                : 0.0001
