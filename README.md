@@ -21,7 +21,7 @@ Este repositorio busca garantizar los pilares fundamentales del servicio de dete
 ________________________________________________________________________________________________________________
 
 ### Estructura
-
+```text
 fraudes-bancarios/
 ├── monitoring.py             # Sistema de monitoreo con MLflow
 ├── simulate_incidents.py     # Simulación de incidentes críticos
@@ -37,15 +37,17 @@ fraudes-bancarios/
     ├── mlflow_umbral_estandar_050.png
     ├── mlflow_incidente_degradacion.png
     └── mlflow_incidente_alta_latencia.png
+```
+___________________________________________________________________________________________________________________
 
-____________________________________________________________________________________________________________________
+### Requisitos y Dependencias
 
-
-Librería	Versión
-mlflow	3.14.0
-scikit-learn	1.4.2
-numpy	1.26.4
-pandas	2.2.2
+| Librería | Versión |
+| :--- | :--- |
+| `mlflow` | 3.14.0 |
+| `scikit-learn` | 1.4.2 |
+| `numpy` | 1.26.4 |
+| `pandas` | 2.2.2 |
 
 ___________________________________________________________________________________________________________________
 
@@ -63,8 +65,3 @@ ________________________________________________________________________________
    * *Mecanismos:* SLO · Error budgets · Alertmanager
 6. **Acciones de mitigación y respuesta**
    * *Operaciones:* Rollback · Reentrenamiento · Escalamiento
-
-
-
-
-
