@@ -1,0 +1,19 @@
+2026-11-15 04:44:08,458 - WARNING - [INC-001] [P2] ALERTA: Degradación de desempeño del modelo v3 detectada.
+2026-11-15 04:44:08,461 - WARNING - Detalle: El Recall ha caído a 0.846 (Umbral mínimo: 0.90)
+2026-11-15 04:44:08,462 - INFO - [INC-001] MITIGACIÓN COMPLETADA: Rollback exitoso. Versión activa actual: v2
+2026-11-15 04:44:08,464 - ERROR - [INC-002] [P1] ALERTA: Latencia de Inferencia p95 fuera de rango (650ms).
+2026-11-15 04:44:08,466 - INFO - [INC-002] MITIGACIÓN COMPLETADA: Escalado horizontal a 5 réplicas. Latencia actual: 145ms
+2026-11-15 04:47:47,109 - WARNING - [INC-001] [P2] ALERTA ACTIVADA: Recall de v3 degradado a 84.6% (Umbral mínimo: 90%) | Runbook asociado: RB-001 | SLA Objetivo: ≤ 15 min
+2026-11-15 04:47:47,113 - ERROR - [INC-002] [P1] ALERTA ACTIVADA: Latencia p95 incrementada a 650 ms (Umbral máximo: 150 ms) | Runbook asociado: RB-002 | SLA Objetivo: ≤ 5 min
+2026-11-15 04:54:40,281 - WARNING - [RUNBOOK RB-001] Iniciando protocolo de Rollback para mitigar caída de desempeño de v3.
+2026-11-15 04:54:40,284 - INFO - [RUNBOOK RB-001] Paso 1/3: Verificando estado de salud e historial de v2...
+2026-11-15 04:54:40,785 - INFO - [RUNBOOK RB-001] Paso 2/3: Redirigiendo el 100% de las peticiones de inferencia hacia v2...
+2026-11-15 04:54:41,287 - WARNING - [RUNBOOK RB-001] Paso 3/3: Desactivando endpoint productivo de v3 para análisis forense.
+2026-11-15 04:54:41,288 - INFO - [RUNBOOK RB-001] MITIGACIÓN EXITOSA: Reversión completada en 1.0072s. Versión activa: v2.
+2026-11-15 04:54:41,290 - ERROR - [RUNBOOK RB-002] Iniciando protocolo de escalamiento rápido. Latencia p95 rompe SLO.
+2026-11-15 04:54:41,291 - INFO - [RUNBOOK RB-002] Paso 1/3: Consultando recursos disponibles en el clúster transaccional...
+2026-11-15 04:54:41,792 - INFO - [RUNBOOK RB-002] Paso 2/3: Incrementando réplicas de 2 a 5...
+2026-11-15 04:54:42,293 - INFO - [RUNBOOK RB-002] Paso 3/3: Monitoreando tiempo de respuesta p95 posterior al escalamiento (Latencia actual: 145ms)
+2026-11-15 04:54:42,295 - INFO - [RUNBOOK RB-002] MITIGACIÓN EXITOSA: Escalamiento completado. Réplicas activas: 5.
+2026-11-15 04:56:19,329 - WARNING - [INC-001] [P2] ALERTA ACTIVADA: Recall de v3 degradado a 84.6% (Umbral mínimo: 90%) | Runbook: RB-001 (Rollback) | SLA Objetivo: ≤ 15 min
+2026-11-15 04:56:19,332 - ERROR - [INC-002] [P1] ALERTA ACTIVADA: Latencia p95 incrementada a 650 ms (Umbral máximo: 150 ms) | Runbook: RB-002 (Scale-Up) | SLA Objetivo: ≤ 5 min
