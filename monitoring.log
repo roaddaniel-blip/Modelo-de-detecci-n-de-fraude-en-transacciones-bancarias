@@ -7,8 +7,6 @@ if os.path.exists(monitoring_log_path):
     with open(monitoring_log_path, 'r') as file:
         log_content = file.read()
         print(log_content)
-else:
-    print(f"❌ El archivo {monitoring_log_path} aún no ha sido generado en el sistema.")
 
 
 2026-11-15 04:44:08,146 - INFO - Modelo v1 registrado. Recall: 0.884 (FAIL), Precision: 0.832 (FAIL)
