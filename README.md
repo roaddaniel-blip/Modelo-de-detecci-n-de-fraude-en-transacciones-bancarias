@@ -65,3 +65,36 @@ ________________________________________________________________________________
    * *Mecanismos:* SLO · Error budgets · Alertmanager
 6. **Acciones de mitigación y respuesta**
    * *Operaciones:* Rollback · Reentrenamiento · Escalamiento
+
+____________________________________________________________________________________________________________________
+
+### Métricas de Evaluación y Umbrales Operativos
+
+| Métrica | Descripción | Umbral propuesto |
+| :--- | :--- | :---: |
+| **Precision** | Proporción de transacciones clasificadas como fraude que realmente son fraudulentas. | **≥ 85 %** |
+| **Recall** | Porcentaje de fraudes reales identificados correctamente. | **≥ 90 %** |
+| **F1-score** | Equilibrio entre precision y recall. | **≥ 87 %** |
+| **PR-AUC** | Capacidad de distinguir fraudes en conjuntos de datos desbalanceados. | **≥ 0,85** |
+| **Tasa de falsos positivos (FPR)** | Porcentaje de transacciones legítimas clasificadas incorrectamente como fraude. | **≤ 2 %** |
+| **Tasa de falsos negativos (FNR)** | Porcentaje de fraudes reales que el modelo no identifica. | **≤ 10 %** |
+
+_________________________________________________________________________________________________________________________
+
+### Niveles de Alerta y Severidad (Error Budget Burn Rate)
+
+| Alerta | Condición | Severidad |
+| :--- | :--- | :---: |
+| **Consumo crítico** | Burn rate ≥ 14,4 durante ventanas de 5 min y 1 h | **P1** |
+| **Consumo elevado** | Burn rate ≥ 6 durante ventanas de 30 min y 6 h | **P2** |
+| **Degradación sostenida** | Burn rate ≥ 3 durante ventanas de 2 h y 24 h | **P3** |
+| **Operación estable** | Burn rate < 1 | **Normal** |
+
+###Clasificación de Incidentes y Tiempos de Respuesta (SLA)
+
+| Prioridad | Impacto | Ejemplo | Tiempo objetivo de respuesta |
+| :--- | :--- | :--- | :---: |
+| **P1 · Crítica** | Riesgo financiero elevado o interrupción generalizada | Servicio indisponible o caída grave de detección de fraude | **≤ 5 min** |
+| **P2 · Alta** | Degradación significativa del servicio | Aumento sostenido de latencia o pérdida de precision | **≤ 15 min** |
+| **P3 · Media** | Anomalía controlada sin impacto inmediato importante | Data drift moderado | **≤ 1 h** |
+| **P4 · Baja** | Evento informativo o preventivo | Variación leve dentro de tolerancias | **Revisión programada** |
