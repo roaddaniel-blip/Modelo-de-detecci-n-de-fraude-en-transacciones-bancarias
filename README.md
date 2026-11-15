@@ -174,6 +174,7 @@ ________________________________________________________________________________
 
 <img width="1671" height="941" alt="Panel de Detección de Fraude Bancario" src="https://github.com/user-attachments/assets/0cb3dd43-6f25-4de7-bb8f-a474b23b996d" />
 
+Nota:imagen simulada de un dashboard
 __________________________________________________________________________________________________________________________
 
 # Simulación de incidentes
