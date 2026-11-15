@@ -1,0 +1,37 @@
+# 1. Configurar o recuperar el logger de incidentes
+incidents_logger = logging.getLogger('incidents')
+if not incidents_logger.handlers:
+    incidents_logger.setLevel(logging.INFO)
+    ih = logging.FileHandler('incidents.log', mode='w')
+    ih.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+    incidents_logger.addHandler(ih)
+
+# 2. Definición del catálogo de incidentes y SLA según las tablas
+tabla_sla = [
+    {"Prioridad": "P1", "Impacto": "Crítica", "Ejemplo": "Servicio indisponible o caída grave de detección", "SLA": "≤ 5 min", "Runbook": "RB-002"},
+    {"Prioridad": "P2", "Impacto": "Alta", "Ejemplo": "Aumento sostenido de latencia o pérdida de precision", "SLA": "≤ 15 min", "Runbook": "RB-001"},
+    {"Prioridad": "P3", "Impacto": "Media", "Ejemplo": "Data drift moderado", "SLA": "≤ 1 h", "Runbook": "RB-003"},
+    {"Prioridad": "P4", "Impacto": "Baja", "Ejemplo": "Variación leve dentro de tolerancias", "SLA": "Revisión programada", "Runbook": "N/A"}
+]
+df_sla = pd.DataFrame(tabla_sla)
+
+# 3. Función para simular y registrar incidentes con su SLA objetivo
+def simular_incidente(id_incidente, prioridad, descripcion_error):
+    sla_info = df_sla[df_sla["Prioridad"] == prioridad].iloc[0]
+    
+    mensaje_log = f"[{id_incidente}] [{prioridad}] ALERTA ACTIVADA: {descripcion_error} | Runbook asociado: {sla_info['Runbook']} | SLA Objetivo: {sla_info['SLA']}"
+    
+    if prioridad in ["P1", "Critical"]:
+        incidents_logger.error(mensaje_log)
+    elif prioridad == "P2":
+        incidents_logger.warning(mensaje_log)
+    else:
+        incidents_logger.info(mensaje_log)
+        
+    print(f"✔ Incidente {id_incidente} ({prioridad}) registrado en 'incidents.log'.")
+
+# Simulación de eventos reales descritos
+simular_incidente("INC-001", "P2", "Recall de v3 degradado a 84.6% (Umbral mínimo: 90%)")
+simular_incidente("INC-002", "P1", "Latencia p95 incrementada a 650 ms (Umbral máximo: 150 ms)")
+
+display(df_sla)
