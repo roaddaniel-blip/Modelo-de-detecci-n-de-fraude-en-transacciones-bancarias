@@ -154,5 +154,41 @@ ________________________________________________________________________________
 
 # Evidencia de implementación
 
-### Capturas o exportes de la herramienta
+| Métrica | Modelo v1 | Modelo v2 | Modelo v3 |
+| :--- | :---: | :---: | :---: |
+| Precision | 83,2 % | 87,5 % | 89,1 % |
+| Recall | 88,4 % | 92,3 % | 84,6 % |
+| F1-score | 85,7 % | 89,8 % | 86,8 % |
+| PR-AUC | 0,86 | 0,92 | 0,89 |
 
+<img width="596" height="317" alt="image" src="https://github.com/user-attachments/assets/c6989582-3042-4320-920a-fe1711463b0f" />
+
+___________________________________________________________________________________________________________________________
+
+# Visualización de métricas, alertas y dashboards
+
+* **Métricas operativas:** disponibilidad, latencia p95, errores HTTP 5xx y transacciones por segundo.
+* **Desempeño del modelo:** precision, recall, F1-score y PR-AUC.
+* **Detección de anomalías:** evolución del PSI y alertas de data drift.
+* **Gestión de incidentes:** alertas P1, P2 y P3, estado de atención y consumo del presupuesto de error.
+
+<img width="1671" height="941" alt="Panel de Detección de Fraude Bancario" src="https://github.com/user-attachments/assets/0cb3dd43-6f25-4de7-bb8f-a474b23b996d" />
+
+__________________________________________________________________________________________________________________________
+
+# Simulación de incidentes
+
+| Criterio | INC-001: Degradación del modelo | INC-002: Incremento de latencia |
+| :--- | :--- | :--- |
+| Prioridad | P2 – Alta | P2 – Alta |
+| Problema detectado | Disminución de la capacidad para detectar fraudes | Aumento del tiempo de respuesta |
+| Métrica afectada | Recall | Latencia p95 |
+| Valor inicial | 92,3 % | 150 ms |
+| Valor durante el incidente | 84,6 % | 650 ms |
+| Objetivo establecido | Recall ≥ 90 % | Latencia p95 ≤ 200 ms |
+| Herramientas de detección | MLflow y Grafana | Prometheus y Grafana |
+| Runbook aplicado | RB-001 | RB-002 |
+| Diagnóstico | Comparación de modelos v2 y v3 | Análisis de recursos y trazas |
+| Acción correctiva | Rollback del modelo v3 a v2 | Escalamiento y rollback del servicio |
+| Resultado posterior | Recall recuperado al 92,3 % | Latencia reducida a 145 ms |
+| Mejora obtenida | +7,7 puntos porcentuales | Reducción de latencia del 77,7 % |
