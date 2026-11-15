@@ -191,4 +191,8 @@ ________________________________________________________________________________
 
 __________________________________________________________________________________________________________________________
 
+# Conclusiones 
 
+**Protección del rendimiento:** Se definieron límites claros (SLO) que detectaron una caída en el Modelo v3 (84.6 % de *Recall*). El sistema activó un regreso automático al Modelo v2 (92.3 %), asegurando la calidad del servicio.
+* **Estabilidad ante sobrecargas:** Ante un pico crítico de latencia en el *checkout* (650 ms), la infraestructura escaló automáticamente de 2 a 5 réplicas, normalizando el tiempo de respuesta a 145 ms en minutos.
+* **Control y respuesta rápida:** La integración de MLflow, W&B y bitácoras centralizadas brinda auditorías transparentes, mientras que las alertas en Slack y PagerDuty reducen al mínimo el tiempo de reacción ante incidentes.
