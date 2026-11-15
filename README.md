@@ -178,17 +178,16 @@ ________________________________________________________________________________
 
 # Simulación de incidentes
 
-| Criterio | INC-001: Degradación del modelo | INC-002: Incremento de latencia |
+| Evidencia | INC-001: Degradación del modelo | INC-002: Incremento de latencia |
 | :--- | :--- | :--- |
-| Prioridad | P2 – Alta | P2 – Alta |
-| Problema detectado | Disminución de la capacidad para detectar fraudes | Aumento del tiempo de respuesta |
-| Métrica afectada | Recall | Latencia p95 |
-| Valor inicial | 92,3 % | 150 ms |
-| Valor durante el incidente | 84,6 % | 650 ms |
-| Objetivo establecido | Recall ≥ 90 % | Latencia p95 ≤ 200 ms |
-| Herramientas de detección | MLflow y Grafana | Prometheus y Grafana |
-| Runbook aplicado | RB-001 | RB-002 |
-| Diagnóstico | Comparación de modelos v2 y v3 | Análisis de recursos y trazas |
-| Acción correctiva | Rollback del modelo v3 a v2 | Escalamiento y rollback del servicio |
-| Resultado posterior | Recall recuperado al 92,3 % | Latencia reducida a 145 ms |
-| Mejora obtenida | +7,7 puntos porcentuales | Reducción de latencia del 77,7 % |
+| Detección | Recall disminuye del 92,3 % al 84,6 %. | Latencia p95 aumenta de 150 a 650 ms. |
+| Diagnóstico | Comparación de versiones v2 y v3 mediante MLflow. | Análisis de métricas y trazas mediante Grafana y Tempo. |
+| Runbook | RB-001 | RB-002 |
+| Acción correctiva | Rollback de la versión v3 a v2. | Escalamiento horizontal y rollback del servicio. |
+| Validación | Nueva evaluación del desempeño predictivo. | Nueva medición de latencia tras la intervención. |
+| Resultado simulado | Recall recuperado al 92,3 %. | Latencia reducida a 145 ms. |
+| Estado final | Recuperado | Recuperado |
+
+__________________________________________________________________________________________________________________________
+
+
